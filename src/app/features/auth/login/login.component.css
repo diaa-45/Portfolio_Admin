@@ -1,0 +1,88 @@
+/* Container for centering the card */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #f5f5f5;
+}
+
+/* Card styling */
+.login-container mat-card {
+  width: 400px;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+/* Heading */
+.login-container mat-card h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #1976d2;
+  font-family: Arial, sans-serif;
+}
+
+/* Form layout */
+.login-container mat-card form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Full-width form fields */
+.login-container mat-card form .full-width {
+  width: 100%;
+}
+
+/* Space between form fields */
+.login-container mat-card form mat-form-field {
+  margin-bottom: 1.5rem;
+}
+
+/* Submit button styling */
+.login-container mat-card form button {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* Optional: hover effect for button */
+.login-container mat-card form button:hover {
+  background-color: #1565c0;
+  color: white;
+}
+/* Style mat-labels */
+.login-container mat-card form mat-form-field mat-label {
+  color: #1976d2;           /* Blue labels */
+  font-weight: 600;          /* Slightly bold */
+  font-size: 14px;           /* Readable size */
+}
+
+/* Style input fields */
+.login-container mat-card form input[matInput] {
+  padding: 0.5rem;
+  border-radius: 4px;
+  font-size: 14px;
+  background: #f9f9f9;       /* Light gray background */
+  transition: all 0.3s ease;
+}
+
+/* Focus effect for input fields */
+.login-container mat-card form input[matInput]:focus {
+  border: 1px solid #1976d2;  /* Highlight border on focus */
+  background: #fff;            /* White background on focus */
+  outline: none;
+}
+
+/* Optional: style placeholder text */
+.login-container mat-card form input[matInput]::placeholder {
+  color: #999;
+  font-style: italic;
+}
+
+/* Style password input separately if needed */
+.login-container mat-card form input[type="password"] {
+  letter-spacing: 2px;         /* Masked letters spacing */
+}

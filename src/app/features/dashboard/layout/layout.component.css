@@ -1,0 +1,16 @@
+.layout-container {
+  display: flex;
+  height: 100vh;
+}
+
+.layout-container .main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.layout-container .main-content .content {
+  flex: 1;
+  padding: 1rem;
+  background: #f9f9f9;
+}
