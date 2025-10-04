@@ -26,8 +26,8 @@ export class LoginComponent {
   ) {}
   
 ngOnInit(){
-this.fb.group({
-    username: ['', Validators.required],
+  this.form=this.fb.group({
+    email: ['', Validators.required],
     password: ['', Validators.required],
   });
 }

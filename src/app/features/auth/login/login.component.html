@@ -1,10 +1,13 @@
 <div class="login-container">
   <mat-card>
-    <h2>Admin Login</h2>
+    <div class="login-header">
+      <img src="/logo.jpg" alt="Logo" class="login-logo" />
+      <h2>Admin Login</h2>
+    </div>
     <form [formGroup]="form" (ngSubmit)="submit()">
       <mat-form-field class="full-width">
-        <mat-label>Username</mat-label>
-        <input matInput formControlName="username" />
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" />
       </mat-form-field>
 
       <mat-form-field class="full-width">
@@ -12,7 +15,9 @@
         <input matInput type="password" formControlName="password" />
       </mat-form-field>
 
-      <button mat-raised-button color="primary" type="submit">Login</button>
+      <button mat-raised-button color="primary" type="submit" class="login-btn">
+        <i class="fas fa-sign-in-alt"></i> Login
+      </button>
     </form>
   </mat-card>
 </div>

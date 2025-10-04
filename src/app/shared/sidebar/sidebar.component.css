@@ -1,24 +1,96 @@
+/* Sidebar Container */
 .sidebar {
-  width: 220px;
-  background: #222;
-  color: white;
-  padding: 1rem;
+  width: 240px;
+  min-height: 100vh;
+  background: #1e293b; /* dark slate */
+  color: #f1f5f9;      /* light text */
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+  z-index: 1000;
 }
 
-.sidebar ul {
+/* Header */
+.sidebar-header {
+  padding: 20px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  text-align: center;
+  background: #0f172a;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Menu */
+.sidebar-menu {
   list-style: none;
   padding: 0;
+  margin: 0;
+  flex: 1;
 }
 
-.sidebar ul li {
-  margin: 1rem 0;
+.sidebar-menu li {
+  border-bottom: 1px solid rgba(255,255,255,0.05);
 }
 
-.sidebar ul li a {
-  color: white;
+.sidebar-menu li a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
   text-decoration: none;
+  color: #cbd5e1;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.25s ease;
 }
 
-.sidebar ul li a.active {
-  font-weight: bold;
+.sidebar-menu li a:hover {
+  background: #334155;
+  color: #ffffff;
+  padding-left: 28px;
+}
+
+/* Active Link */
+.sidebar-menu li a.active {
+  background: #0ea5e9; /* sky blue */
+  color: #fff;
+  font-weight: 600;
+  border-left: 4px solid #38bdf8;
+}
+
+/* Responsive - Collapse on small screens */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 70px;
+  }
+
+  .sidebar-header h2 {
+    font-size: 1rem;
+  }
+
+  .sidebar-menu li a {
+    justify-content: center;
+    padding: 14px;
+  }
+
+  .sidebar-menu li a span,
+  .sidebar-header h2 {
+    display: none;
+  }
+}
+/* Logo + Title */
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 70px;
+  height: 70px;
+  border-radius: 15px;
+  object-fit: contain;
 }
