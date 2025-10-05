@@ -1,0 +1,40 @@
+<div class="project-form-container">
+  <h2>{{ projectId ? 'Edit Project' : 'Create New Project' }}</h2>
+
+  <form [formGroup]="form" (ngSubmit)="submit()" enctype="multipart/form-data">
+    <mat-form-field class="full-width">
+      <mat-label>Title</mat-label>
+      <input matInput formControlName="title" />
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Description</mat-label>
+      <textarea matInput formControlName="description"></textarea>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Demo Link</mat-label>
+      <input matInput formControlName="demoLink" />
+    </mat-form-field>
+
+    <div class="file-input-container">
+        <label>Cover Image:</label>
+        <input type="file" id="coverImage" (change)="onImageCoverChange($event)" />
+        <label for="coverImage" class="custom-file-btn">Choose File</label>
+<!--         <span class="file-names">{{ coverImageName }}</span>
+ -->    </div>
+    
+    <div class="file-input-container">
+        <label>Images Tour:</label>
+        <input type="file" id="imagesTour" multiple (change)="onImagesTourChange($event)" />
+        <label for="imagesTour" class="custom-file-btn">Choose Files</label>
+<!--         <span class="file-names">{{ imagesTourNames }}</span>
+ -->    </div>
+
+
+    <button mat-raised-button color="primary" type="submit">
+      {{ projectId ? 'Update' : 'Create' }}
+    </button>
+    <button mat-button type="button" (click)="cancel()">Cancel</button>
+  </form>
+</div>

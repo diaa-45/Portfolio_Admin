@@ -1,0 +1,27 @@
+<div class="project-details-container" *ngIf="project">
+  <h2>{{ project.title }}</h2>
+  <p>{{ project.description }}</p>
+
+  <div class="cover-image">
+    <h4>Cover Image</h4>
+    <img [src]="project.imageCover ? 'https://localhost:7023'+ project.imageCover : 'default.png'" alt="{{ project.title }}" />
+  </div>
+
+  <div class="tour-images" *ngIf="project.images?.length">
+  <h4>Tour Images</h4>
+  <div class="images-grid">
+    <div class="image-wrapper" *ngFor="let img of project.images; let i = index">
+      <img [src]="'https://localhost:7023' + img" alt="{{ project.title }}" />
+      <span class="remove-btn" (click)="removeImage(i)">×</span>
+    </div>
+  </div>
+</div>
+
+
+ <p class="demo-link-container">
+  <strong>Demo Link:</strong>
+  <a [href]="project.demoLink" target="_blank" class="demo-link">{{ project.demoLink }}</a>
+</p>
+
+  <button mat-raised-button color="primary" (click)="back()">Back</button>
+</div>

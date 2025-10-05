@@ -1,0 +1,51 @@
+<div class="projects-container">
+  <h2>Projects Management</h2>
+
+  <button mat-raised-button color="primary" (click)="createProject()">
+    + Create New Project
+  </button>
+
+  <table mat-table [dataSource]="projects" class="mat-elevation-z8">
+    
+    <!-- Title Column -->
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef> Title </th>
+      <td mat-cell *matCellDef="let project"> {{ project.title }} </td>
+    </ng-container>
+
+    <!-- Description Column -->
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef> Description </th>
+      <td mat-cell *matCellDef="let project"> {{ project.description }} </td>
+    </ng-container>
+
+    <!-- Cover Column -->
+    <ng-container matColumnDef="imageCover">
+      <th mat-header-cell *matHeaderCellDef> Cover </th>
+      <td mat-cell *matCellDef="let project">
+        <img [src]=" project.imageCover ? 'https://localhost:7023'+ project.imageCover : '/default.png'" alt="{{ project.title }}" width="80" />
+      </td>
+    </ng-container>
+
+    <!-- Demo Link Column -->
+    <ng-container matColumnDef="demoLink">
+      <th mat-header-cell *matHeaderCellDef> Demo </th>
+      <td mat-cell *matCellDef="let project">
+        <a [href]="project.demoLink" target="_blank" class="demo-link"> View Demo </a>
+      </td>
+    </ng-container>
+
+    <!-- Actions Column -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let project">
+        <button mat-button color="accent" (click)="editProject(project)">Edit</button>
+        <button mat-button color="primary" (click)="viewDetails(project)">Details</button>
+        <button mat-button color="warn" (click)="deleteProject(project)">Delete</button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>

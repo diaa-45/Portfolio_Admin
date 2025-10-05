@@ -1,0 +1,72 @@
+.project-form-container {
+  padding: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.project-form-container h2 {
+  margin-bottom: 20px;
+  color: #1976d2;
+  text-align: center;
+}
+
+.project-form-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.project-form-container form mat-form-field {
+  margin-bottom: 15px;
+}
+
+.project-form-container form button {
+  margin-top: 10px;
+  margin-right: 10px;
+}
+/* Container styling for each file input */
+.file-input-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.file-input-container label {
+  font-weight: 500;
+  margin-bottom: 6px;
+  color: #1976d2;
+  font-size: 0.95rem;
+}
+
+/* Hide default file input */
+.file-input-container input[type="file"] {
+  display: none;
+}
+
+/* Custom styled button */
+.file-input-container .custom-file-btn {
+  display: inline-block;
+  padding: 8px 14px;
+  background-color: #1976d2;
+  color: #fff;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  text-align: center;
+  width: fit-content;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.file-input-container .custom-file-btn:hover {
+  background-color: #125ea4;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+}
+
+/* Optional: show selected file names */
+.file-input-container .file-names {
+  margin-top: 6px;
+  font-size: 0.85rem;
+  color: #334155;
+}
