@@ -4,15 +4,17 @@
 
   <div class="cover-image">
     <h4>Cover Image</h4>
-    <img [src]="project.imageCover ? 'https://localhost:7023'+ project.imageCover : 'default.png'" alt="{{ project.title }}" />
+    <img [src]="project.imageCover ? 'https://localhost:44383'+ project.imageCover : 'default.png'" alt="{{ project.title }}" />
   </div>
 
   <div class="tour-images" *ngIf="project.images?.length">
   <h4>Tour Images</h4>
   <div class="images-grid">
     <div class="image-wrapper" *ngFor="let img of project.images; let i = index">
-      <img [src]="'https://localhost:7023' + img" alt="{{ project.title }}" />
-      <span class="remove-btn" (click)="removeImage(i)">×</span>
+      <button mat-icon-button class="delete-btn" (click)="deleteImage(img)" aria-label="Delete image">
+        X
+      </button>
+      <img [src]="'https://localhost:44383' + img.imageUrl" alt="{{ project.title }}" />
     </div>
   </div>
 </div>
@@ -23,5 +25,8 @@
   <a [href]="project.demoLink" target="_blank" class="demo-link">{{ project.demoLink }}</a>
 </p>
 
-  <button mat-raised-button color="primary" (click)="back()">Back</button>
+  <button mat-raised-button color="primary" (click)="back()">
+    <mat-icon>arrow_back</mat-icon>
+    Back to Projects
+  </button>
 </div>

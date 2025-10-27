@@ -3,6 +3,11 @@ export interface Project {
   title: string;
   description: string;
   imageCover: string;      // رابط الصورة الرئيسية
-  images: string[];    // مجموعة صور (جولة للمشروع)
+  images: ProjectImage[];    // مجموعة صور (جولة للمشروع)
   demoLink: string;        // رابط الديمو
+}
+
+export interface ProjectImage{
+  id: number;
+  imageUrl:string;
 }

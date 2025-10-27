@@ -19,7 +19,7 @@ export class ProjectFormComponent implements OnInit {
   form: FormGroup;
   projectId: number | null = null;
   imageCoverFile: File | null = null;
-  imagesTourFiles: File[] = [];
+  images: File[] = [];
 
   constructor(
     private fb: FormBuilder,
@@ -62,26 +62,57 @@ export class ProjectFormComponent implements OnInit {
 
   onImagesTourChange(event: any) {
     if (event.target.files && event.target.files.length > 0) {
-      this.imagesTourFiles = Array.from(event.target.files);
+      this.images = Array.from(event.target.files);
     }
+  }
+
+  get fileNames(): string {
+    return this.images.length > 0 
+      ? this.images.map(file => file.name).join(', ') 
+      : 'No files selected';
   }
 
   submit() {
     if (this.form.invalid) return;
-
+  
     const formData = new FormData();
     formData.append('title', this.form.value.title);
     formData.append('description', this.form.value.description);
     formData.append('demoLink', this.form.value.demoLink || '');
-    if (this.imageCoverFile) formData.append('imageCover', this.imageCoverFile);
-    this.imagesTourFiles.forEach((file, index) => formData.append('imagesTour', file));
-
+  
     if (this.projectId) {
-      this.projectService.updateProject(this.projectId, formData).subscribe(() => this.router.navigate(['/dashboard/projects']));
+      // Update: match UpdateProjectDto
+      formData.append('id', this.projectId.toString());
+  
+      if (this.imageCoverFile) {
+        formData.append('NewImageCover', this.imageCoverFile); // match DTO
+      }
+  
+      for (let i = 0; i < this.images.length; i++) {
+        formData.append('NewImages', this.images[i]); // match DTO
+      }
+  
+      this.projectService.updateProject(this.projectId, formData).subscribe({
+        next: () => this.router.navigate(['/dashboard/projects']),
+        error: (err) => console.error('Error updating project:', err)
+      });
     } else {
-      this.projectService.createProject(formData).subscribe(() => this.router.navigate(['/dashboard/projects']));
+      // Create: match CreateProjectDto
+      if (this.imageCoverFile) {
+        formData.append('imageCover', this.imageCoverFile);
+      }
+  
+      for (let i = 0; i < this.images.length; i++) {
+        formData.append('images', this.images[i]);
+      }
+  
+      this.projectService.createProject(formData).subscribe({
+        next: () => this.router.navigate(['/dashboard/projects']),
+        error: (err) => console.error('Error creating project:', err)
+      });
     }
   }
+  
 
   cancel() {
     this.router.navigate(['/dashboard/projects']);

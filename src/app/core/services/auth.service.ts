@@ -6,7 +6,7 @@ import { TokenService } from './token.service';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-private apiUrl = 'https://localhost:7023/api/auth'; // backend URL
+private apiUrl = 'https://localhost:44383/api/auth'; // backend URL
   constructor(
     private http: HttpClient,
     private router: Router,

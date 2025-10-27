@@ -21,15 +21,15 @@
         <label>Cover Image:</label>
         <input type="file" id="coverImage" (change)="onImageCoverChange($event)" />
         <label for="coverImage" class="custom-file-btn">Choose File</label>
-<!--         <span class="file-names">{{ coverImageName }}</span>
- -->    </div>
+        <span class="file-names">{{ imageCoverFile?.name }}</span>
+    </div>
     
     <div class="file-input-container">
         <label>Images Tour:</label>
         <input type="file" id="imagesTour" multiple (change)="onImagesTourChange($event)" />
         <label for="imagesTour" class="custom-file-btn">Choose Files</label>
-<!--         <span class="file-names">{{ imagesTourNames }}</span>
- -->    </div>
+        <span class="file-names">{{ fileNames }}</span>
+    </div>
 
 
     <button mat-raised-button color="primary" type="submit">

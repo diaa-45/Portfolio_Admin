@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Project } from './project.model';
+import { Project, ProjectImage } from './project.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProjectService {
-  private apiUrl = 'https://localhost:7023/api/Projects'; 
+  private apiUrl = 'https://localhost:44383/api/Projects'; 
+  private apiUrlImages = 'https://localhost:44383/api/Images'; 
 
   constructor(private http: HttpClient) {}
 
@@ -20,7 +21,10 @@ export class ProjectService {
   getProjectById(id: number): Observable<Project> {
     return this.http.get<Project>(`${this.apiUrl}/${id}`);
   }
-
+// get images by project id
+getImagesByProjectId(projectId: number): Observable<ProjectImage[]> {
+  return this.http.get<ProjectImage[]>(`${this.apiUrlImages}/projects/${projectId}`);
+}
   // Create project
   createProject(project: FormData): Observable<Project> {
     return this.http.post<Project>(this.apiUrl, project);
@@ -34,5 +38,10 @@ export class ProjectService {
   // Delete project
   deleteProject(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
+  // Delete a project image by projectId and imageId — calls ImagesController endpoint
+  deleteProjectImage(projectId: number, imageId: number): Observable<void> {
+    const url = `${this.apiUrlImages}/projects/${projectId}/images/${imageId}`; // وفق مسارك في backend
+    return this.http.delete<void>(url);
   }
 }
