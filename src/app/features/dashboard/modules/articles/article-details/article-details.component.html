@@ -1,0 +1,33 @@
+<div class="details-container" *ngIf="!isLoading && article">
+    <div class="image-section">
+        <img [src]="article.mainImage? 'https://localhost:44383'+ article.mainImage : '/defualt-article.png'" alt="Article Cover" />
+    </div>
+
+  
+    <!-- title and author and date Section -->
+    <div class="title-author-date-section">
+        <h2 class="title text-center mb-2 text-2xl font-bold">{{ article.title }}</h2>
+        <p class="author text-center mb-2 text-lg"><strong>By:</strong> {{ article.author || 'Unknown' }}</p>
+        <p class="date text-center mb-2 text-lg"><strong>Date:</strong> {{ article.date | date }}</p>
+    </div>
+    <div class="thumb-image-section">
+         <img [src]="article.thumbImage ? 'https://localhost:44383'+ article.thumbImage : '/defualt-article.png'" alt="Article Thumb" />
+        </div>
+    <div class="content-section">
+      <p>{{ article.content }}</p>
+    </div>
+  </div>
+  
+  <!-- back button -->
+   <div class="back-button">
+    <button mat-raised-button (click)="back()">
+      <mat-icon>arrow_back</mat-icon>
+      Back
+    </button>
+   </div>
+  
+  <!-- Spinner -->
+  <div class="spinner" *ngIf="isLoading">
+    <mat-spinner></mat-spinner>
+  </div>
+  

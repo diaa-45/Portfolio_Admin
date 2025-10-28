@@ -1,0 +1,22 @@
+.article-list-container {
+    padding: 24px;
+  }
+  
+  .article-list-container h2 {
+    color: #1976d2;
+    margin-bottom: 16px;
+  }
+  
+  .article-list-container button {
+    margin-bottom: 16px;
+  }
+  
+  .article-list-container table {
+    width: 100%;
+    margin-top: 8px;
+  }
+  
+  .article-list-container th {
+    background-color: #f5f5f5;
+  }
+  

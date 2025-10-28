@@ -12,7 +12,10 @@ export const DASHBOARD_ROUTES: Routes = [
       {path: 'projects/edit/:id',loadComponent: () => import('./modules/projects/project-form/project-form.component').then(m => m.ProjectFormComponent)},
       {path: 'projects/:id',loadComponent: () => import('./modules/projects/project-details/project-details.component').then(m => m.ProjectDetailsComponent)},
       // articles
-      {path: 'articles', loadComponent: () => import('./modules/articles/articles.component').then(m => m.ArticlesComponent) },
+      {path: 'articles', loadComponent: () => import('./modules/articles/article-list/article-list.component').then(m => m.ArticleListComponent) },
+      {path: 'articles/create',loadComponent: () => import('./modules/articles/article-form/article-form.component').then(m => m.ArticleFormComponent)},
+      {path: 'articles/edit/:id',loadComponent: () => import('./modules/articles/article-form/article-form.component').then(m => m.ArticleFormComponent)},
+      {path: 'articles/:id',loadComponent: () => import('./modules/articles/article-details/article-details.component').then(m => m.ArticleDetailsComponent)},
       // courses
       {path: 'courses', loadComponent: () => import('./modules/courses/courses.component').then(m => m.CoursesComponent) },
       // links
