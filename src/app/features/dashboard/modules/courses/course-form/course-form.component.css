@@ -1,0 +1,107 @@
+/* === Container === */
+.form-container {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 32px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  font-family: "Roboto", "Segoe UI", sans-serif;
+  transition: all 0.3s ease;
+}
+
+.form-container:hover {
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
+}
+
+.form-container h2 {
+  text-align: center;
+  color: #1976d2;
+  margin-bottom: 24px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* === Form Fields === */
+mat-form-field {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+/* === File Upload Section === */
+input[type="file"] {
+  display: none;
+}
+
+.custom-file-btn {
+  display: inline-block;
+  padding: 10px 16px;
+  background-color: #1976d2;
+  color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+  margin-top: 6px;
+}
+
+.custom-file-btn:hover {
+  background-color: #115293;
+}
+
+.file-names {
+  display: block;
+  margin-top: 6px;
+  font-size: 13px;
+  color: #555;
+  font-style: italic;
+  word-break: break-word;
+}
+
+.file-input-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.file-input-container label {
+  font-weight: 500;
+  margin-bottom: 6px;
+  color: #333;
+}
+
+/* === Submit Button === */
+button[type="submit"] {
+  width: 100%;
+  padding: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  border-radius: 8px;
+}
+
+button[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* === Loading Spinner === */
+.spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 250px;
+}
+
+/* === Responsive === */
+@media (max-width: 600px) {
+  .form-container {
+    padding: 20px;
+    margin: 20px;
+  }
+
+  .custom-file-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+

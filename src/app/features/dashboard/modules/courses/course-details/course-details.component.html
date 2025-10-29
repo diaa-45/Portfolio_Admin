@@ -1,0 +1,44 @@
+<div class="details-container" *ngIf="!isLoading && course">
+    <div class="image-section">
+        <img [src]="course.imageCover? 'https://localhost:44383'+ course.imageCover : '/defualt-article.png'" alt="Course Cover" />
+    </div>
+
+  
+    <!-- title and instructor and ContactLink Section -->
+    <div class="title-instructor-section">
+        <h2 class="title text-center mb-2 text-2xl font-bold">{{ course.title }}</h2>
+        <p class="instructor text-center mb-2 text-lg"><strong>Instructor:</strong> {{ course.instructorName || 'Unknown' }}</p>
+        <p class="contact-link text-center mb-2 text-lg">
+          <strong>Contact:</strong> 
+          <!--apper contact number as whatsapp link-->
+        <ng-container *ngIf="course.contactLink">
+            <a [href]="'https://wa.me/' + course.ContactLink" target="_blank">
+                {{ course.contactLink }}
+                <mat-icon inline style="font-size: 18px; vertical-align: middle;">whatsapp</mat-icon>
+            </a>
+        </ng-container>
+        <ng-container *ngIf="!course.contactLink">
+            Not provided
+        </ng-container>
+        </p>
+    </div>
+    
+    <div class="description-section">
+      <h3>Description</h3>
+      <p>{{ course.description }}</p>
+    </div>
+  </div>
+  
+  <!-- back button -->
+   <div class="back-button">
+    <button mat-raised-button (click)="back()">
+      <mat-icon>arrow_back</mat-icon>
+      Back
+    </button>
+   </div>
+  
+  <!-- Spinner -->
+  <div class="spinner" *ngIf="isLoading">
+    <mat-spinner></mat-spinner>
+  </div>
+
