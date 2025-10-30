@@ -45,3 +45,18 @@
     </table>
   </div>
 
+<!-- pagination controls -->
+<div class="pagination" *ngIf="!loading && courses.length > 0">
+  <button mat-button 
+          (click)="loadCourses(currentPage - 1)" 
+          [disabled]="currentPage <= 1 || totalPages <= 1">
+    <mat-icon>chevron_left</mat-icon> Previous
+  </button>
+  <span>Page {{ currentPage }} of {{ totalPages }}</span>
+  <button mat-button 
+          (click)="loadCourses(currentPage + 1)" 
+          [disabled]="currentPage >= totalPages || totalPages <= 1">
+    Next <mat-icon>chevron_right</mat-icon>
+  </button>
+</div>
+

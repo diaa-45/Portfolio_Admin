@@ -20,6 +20,10 @@ export class ArticleListComponent implements OnInit {
   articles: Article[] = [];
   displayedColumns = ['title', 'author', 'thumbImage', 'date', 'actions'];
   loading = false;
+  currentPage: number = 1;
+  pageSize: number = 6;
+  totalPages: number = 0;
+
 
   constructor(
     private articleService: ArticleService,
@@ -28,14 +32,19 @@ export class ArticleListComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.loadArticles();
+    this.loadArticles(this.currentPage);
   }
 
-  loadArticles() {
+  loadArticles(page: number = 1) {
     this.loading = true;
-    this.articleService.getAll().subscribe({
+    this.articleService.getAll(page, this.pageSize).subscribe({
       next: (res) => {
-        this.articles = res;
+        this.articles = res.data;
+        this.currentPage = Number(res.pageNumber) || 1;
+        this.pageSize = Number(res.pageSize) || this.pageSize;
+        this.totalPages = Number(res.totalPages) || 0;
+        console.log("total pages"+res.totalPages);
+        
         this.loading = false;
       },
       error: () => {

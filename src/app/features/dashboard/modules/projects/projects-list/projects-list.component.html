@@ -5,7 +5,7 @@
     + Create New Project
   </button>
 
-  <table mat-table [dataSource]="projects" class="mat-elevation-z8">
+  <table mat-table [dataSource]="projects" class="mat-elevation-z8" *ngIf="!loading">
     
     <!-- Title Column -->
     <ng-container matColumnDef="title">
@@ -48,4 +48,19 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
+
+</div>
+<!-- pagination controls -->
+<div class="pagination" *ngIf="!loading && projects.length > 0">
+  <button mat-button 
+          (click)="loadProjects(currentPage - 1)" 
+          [disabled]="currentPage <= 1 || totalPages <= 1">
+    <mat-icon>chevron_left</mat-icon> Previous
+  </button>
+  <span>Page {{ currentPage }} of {{ totalPages }}</span>
+  <button mat-button 
+          (click)="loadProjects(currentPage + 1)" 
+          [disabled]="currentPage >= totalPages || totalPages <= 1">
+    Next <mat-icon>chevron_right</mat-icon>
+  </button>
 </div>

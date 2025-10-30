@@ -20,6 +20,9 @@ export class CourseListComponent implements OnInit {
   courses: Course[] = [];
   displayedColumns = ['title', 'instructorName', 'imageCover', 'actions'];
   loading = false;
+  currentPage: number = 1;
+  pageSize: number = 6;
+  totalPages: number = 0;
 
   constructor(
     private courseService: CourseService,
@@ -28,14 +31,17 @@ export class CourseListComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.loadCourses();
+    this.loadCourses(this.currentPage);
   }
 
-  loadCourses() {
+  loadCourses(page: number = 1) {
     this.loading = true;
-    this.courseService.getAll().subscribe({
+    this.courseService.getAll(page, this.pageSize).subscribe({
       next: (res) => {
-        this.courses = res;
+        this.courses = res.data;
+        this.currentPage = Number(res.pageNumber) || 1;
+        this.pageSize = Number(res.pageSize) || this.pageSize;
+        this.totalPages = Number(res.totalPages) || 0;
         this.loading = false;
       },
       error: () => {

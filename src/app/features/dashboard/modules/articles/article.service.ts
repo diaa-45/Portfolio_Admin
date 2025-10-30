@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Article } from './article.model';
+import { Article, ArticlePaginationResult } from './article.model';
 
 @Injectable({ providedIn: 'root' })
 export class ArticleService {
@@ -9,8 +9,12 @@ export class ArticleService {
 
   constructor(private http: HttpClient) {}
 
-  getAll(): Observable<Article[]> {
-    return this.http.get<Article[]>(this.apiUrl);
+  getAll(page: number = 1, pageSize: number = 10): Observable<ArticlePaginationResult> {
+    const params = {
+      pageNumber: page.toString(),
+      pageSize: pageSize.toString()
+    };
+    return this.http.get<ArticlePaginationResult>(this.apiUrl, { params });
   }
 
   getById(id: number): Observable<Article> {

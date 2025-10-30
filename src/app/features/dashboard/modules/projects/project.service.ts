@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Project, ProjectImage } from './project.model';
+import { Project, ProjectImage, ProjectPaginationResult } from './project.model';
 
 @Injectable({
   providedIn: 'root'
@@ -12,9 +12,13 @@ export class ProjectService {
 
   constructor(private http: HttpClient) {}
 
-  // Get all projects
-  getProjects(): Observable<Project[]> {
-    return this.http.get<Project[]>(this.apiUrl);
+  // Get paginated list of projects (optionally with images)
+  getProjects(page: number = 1, pageSize: number = 10): Observable<ProjectPaginationResult> {
+    const params = {
+      pageNumber: page.toString(),
+      pageSize: pageSize.toString()
+    };
+    return this.http.get<ProjectPaginationResult>(this.apiUrl, { params });
   }
 
   // Get single project

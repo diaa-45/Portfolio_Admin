@@ -7,3 +7,11 @@ export interface Course {
   contactLink: string;
 }
 
+// pagination model
+export interface CoursePaginationResult {
+  data: Course[];
+  pageNumber: number;
+  pageSize: number;
+  totalPages: number;
+}
+

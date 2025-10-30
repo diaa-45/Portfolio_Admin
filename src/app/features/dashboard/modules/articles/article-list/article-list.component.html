@@ -48,4 +48,19 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
   </div>
+
+  <!--add pagination pages next and previous-->
+  <div class="pagination" *ngIf="!loading && articles.length > 0">
+    <button mat-button 
+            (click)="loadArticles(currentPage - 1)" 
+            [disabled]="currentPage <= 1">
+      <mat-icon>chevron_left</mat-icon> Previous
+    </button>
+    <span>Page {{ currentPage }} of {{ totalPages }}</span>
+    <button mat-button 
+            (click)="loadArticles(currentPage + 1)" 
+            [disabled]="currentPage >= totalPages">
+      Next <mat-icon>chevron_right</mat-icon>
+    </button>
+  </div>
   
