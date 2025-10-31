@@ -34,8 +34,12 @@
         </tr>
         <tr>
           <th>Opening Image</th>
-          <td>
-            <input type="file" id="mainImage" (change)="onOpeningImageChange($event)" />
+          <td style="display: flex; align-items: center; gap: 12px;">
+            <label for="openingImage" class="custom-file-btn">
+              <input type="file" id="openingImage" (change)="onOpeningImageChange($event)" hidden/>
+              <mat-icon class="upload-icon">cloud_upload</mat-icon>
+              <span>Select image</span>
+            </label>
             <div class="preview" *ngIf="openingImage">
               <img [src]="openingImage" alt="Preview" />
             </div>

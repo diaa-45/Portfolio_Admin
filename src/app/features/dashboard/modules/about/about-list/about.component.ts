@@ -3,11 +3,12 @@ import { Component, OnInit } from '@angular/core';
 import { AboutSettings } from '../about.model';
 import { AboutService } from '../about.service';
 import { FormsModule } from '@angular/forms';
+import { MatIcon } from "@angular/material/icon";
 
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, MatIcon],
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.css']
 })
