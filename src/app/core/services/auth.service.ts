@@ -15,7 +15,9 @@ private apiUrl = 'https://localhost:44383/api/auth'; // backend URL
 
   login(credentials: { email: string; password: string }): Observable<any> {
     return this.http.post<{ token: string }>(`${this.apiUrl}/login`, credentials).pipe(
-      tap((res) => this.tokenService.setToken(res.token))
+      tap((res) => {
+        this.tokenService.setToken(res.token);
+      })
     );
   }
 
@@ -31,4 +33,5 @@ private apiUrl = 'https://localhost:44383/api/auth'; // backend URL
   getToken(): string | null {
     return this.tokenService.getToken();
   }
+
 }

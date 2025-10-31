@@ -1,0 +1,68 @@
+<div class="about-settings">
+  <h2>About Settings</h2>
+
+  <div *ngIf="isLoading">Loading...</div>
+  <div *ngIf="error" class="error">{{ error }}</div>
+  <div *ngIf="saveMessage" class="success">{{ saveMessage }}</div>
+
+  <form *ngIf="!isLoading && about" (ngSubmit)="saveAbout()">
+    <table class="kv-table">
+      <tbody>
+        <tr>
+          <th>Title</th>
+          <td><input type="text" [(ngModel)]="about.title" name="title" /></td>
+        </tr>
+        <tr>
+          <th>Opening Text</th>
+          <td><input type="text" [(ngModel)]="about.openingText" name="openingText" /></td>
+        </tr>
+        <tr>
+          <th>Description</th>
+          <td><textarea rows="3" [(ngModel)]="about.description" name="description"></textarea></td>
+        </tr>
+        <tr>
+          <th>Mission</th>
+          <td><textarea rows="4" [(ngModel)]="about.mission" name="mission"></textarea></td>
+        </tr>
+        <tr>
+          <th>Vision</th>
+          <td><textarea rows="4" [(ngModel)]="about.vision" name="vision"></textarea></td>
+        </tr>
+        <tr>
+          <th>Values</th>
+          <td><textarea rows="4" [(ngModel)]="about.values" name="values"></textarea></td>
+        </tr>
+        <tr>
+          <th>Opening Image</th>
+          <td>
+            <input type="file" id="mainImage" (change)="onOpeningImageChange($event)" />
+            <div class="preview" *ngIf="openingImage">
+              <img [src]="openingImage" alt="Preview" />
+            </div>
+            <div class="preview" *ngIf="!openingImage && about.openingImage">
+              <img [src]="'https://localhost:44383' + about.openingImage" alt="Current Image" />
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="actions">
+      <button type="submit" [disabled]="isSaving">{{ isSaving ? 'Saving...' : 'Save' }}</button>
+    </div>
+  </form>
+</div>
+
+<div class="about-settings-container">
+  
+  <div *ngIf="!isLoading && !error && about" class="about-content">
+    
+
+    <div class="meta">
+      <span>Created: {{ about.createdAt | date:'medium' }}</span>
+      <span>Updated: {{ about.updatedAt | date:'medium' }}</span>
+    </div>
+  </div>
+</div>
+
+

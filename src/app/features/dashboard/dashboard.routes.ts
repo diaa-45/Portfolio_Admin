@@ -23,6 +23,8 @@ export const DASHBOARD_ROUTES: Routes = [
       {path: 'courses/:id',loadComponent: () => import('./modules/courses/course-details/course-details.component').then(m => m.CourseDetailsComponent)},
       // links
       {path: 'links', loadComponent: () => import('./modules/links/links.component').then(m => m.LinksComponent) },
+      // about
+      {path: 'about', loadComponent: () => import('./modules/about/about-list/about.component').then(m => m.AboutComponent) },
       {path: '', redirectTo: 'projects', pathMatch: 'full' }
     ]
   }
