@@ -5,7 +5,9 @@ import { ProjectService } from '../project.service';
 import { Project, ProjectImage } from '../project.model';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { NotificationService } from '../../../../../core/services/notification.service';
+import { ImagePreviewDialogComponent } from './image-preview-dialog.component';
 
 @Component({
   selector: 'app-project-details',
@@ -17,12 +19,15 @@ import { NotificationService } from '../../../../../core/services/notification.s
 export class ProjectDetailsComponent implements OnInit {
   project: Project | null = null;
   loading = false;
+  selectedFile: File | null = null;
+  selectedImagePreview: string | null = null;
 
   constructor(
     private route: ActivatedRoute,
     private projectService: ProjectService,
     private notify: NotificationService,
-    private router: Router
+    private router: Router,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -36,14 +41,7 @@ export class ProjectDetailsComponent implements OnInit {
       next: (p) => {
         this.project = p;
         this.loading = false;
-        this.projectService.getImagesByProjectId(id).subscribe({
-          next: (images) => {
-            this.project!.images = images;
-          },
-          error: (err) => {
-            this.notify.error('Failed to load images');
-          }
-        });
+        this.project!.images = p.images;
       },
       error: (err) => {
         this.loading = false;
@@ -72,6 +70,77 @@ export class ProjectDetailsComponent implements OnInit {
     });
   }
 
+  onFileSelected(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files[0]) {
+      const file = input.files[0];
+      this.selectedFile = file;
+      
+      // Create preview
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        this.selectedImagePreview = e.target.result;
+        // Open dialog with preview
+        this.openImagePreviewDialog();
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+
+  openImagePreviewDialog(): void {
+    if (!this.selectedFile || !this.selectedImagePreview || !this.project) return;
+
+    const dialogRef = this.dialog.open(ImagePreviewDialogComponent, {
+      width: '500px',
+      disableClose: true,
+      data: {
+        preview: this.selectedImagePreview,
+        fileName: this.selectedFile.name,
+        loading: false
+      }
+    });
+
+    // Handle save action
+    const dialogInstance = dialogRef.componentInstance as ImagePreviewDialogComponent;
+    dialogInstance.save.subscribe(() => {
+      dialogInstance.data.loading = true;
+      this.saveImage(dialogRef);
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result !== 'saved') {
+        this.clearSelection();
+      }
+    });
+  }
+
+  saveImage(dialogRef: any): void {
+    if (!this.project || !this.selectedFile) return;
+    
+    this.loading = true;
+    const dialogInstance = dialogRef.componentInstance as ImagePreviewDialogComponent;
+
+    this.projectService.addImageToProject(this.project.id, this.selectedFile).subscribe({
+      next: () => {
+        this.notify.success('Image saved successfully');
+        this.selectedFile = null;
+        this.selectedImagePreview = null;
+        this.loading = false;
+        dialogRef.close('saved');
+        this.loadProject(this.project!.id); // Reload to show new image
+      },
+      error: (err) => {
+        this.loading = false;
+        dialogInstance.data.loading = false;
+        this.notify.error('Failed to save image');
+      }
+    });
+  }
+
+  clearSelection(): void {
+    this.selectedFile = null;
+    this.selectedImagePreview = null;
+  }
   back() {
     this.router.navigate(['/dashboard/projects']);
   }

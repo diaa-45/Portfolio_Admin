@@ -7,8 +7,7 @@ import { Project, ProjectImage, ProjectPaginationResult } from './project.model'
   providedIn: 'root'
 })
 export class ProjectService {
-  private apiUrl = 'https://localhost:44383/api/Projects'; 
-  private apiUrlImages = 'https://localhost:44383/api/Images'; 
+  private apiUrl = 'https://localhost:44383/api/Projects';
 
   constructor(private http: HttpClient) {}
 
@@ -26,9 +25,9 @@ export class ProjectService {
     return this.http.get<Project>(`${this.apiUrl}/${id}`);
   }
 // get images by project id
-getImagesByProjectId(projectId: number): Observable<ProjectImage[]> {
+/* getImagesByProjectId(projectId: number): Observable<ProjectImage[]> {
   return this.http.get<ProjectImage[]>(`${this.apiUrlImages}/projects/${projectId}`);
-}
+} */
   // Create project
   createProject(project: FormData): Observable<Project> {
     return this.http.post<Project>(this.apiUrl, project);
@@ -45,7 +44,14 @@ getImagesByProjectId(projectId: number): Observable<ProjectImage[]> {
   }
   // Delete a project image by projectId and imageId — calls ImagesController endpoint
   deleteProjectImage(projectId: number, imageId: number): Observable<void> {
-    const url = `${this.apiUrlImages}/projects/${projectId}/images/${imageId}`; // وفق مسارك في backend
+    const url = `${this.apiUrl}/${projectId}/images/${imageId}`; // وفق مسارك في backend
     return this.http.delete<void>(url);
+  }
+  // add image to project
+  addImageToProject(projectId: number, image: File): Observable<void> {
+    const url = `${this.apiUrl}/${projectId}/images`;
+    const formData = new FormData();
+    formData.append('image', image);
+    return this.http.post<void>(url, formData);
   }
 }

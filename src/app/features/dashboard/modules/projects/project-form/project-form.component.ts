@@ -32,7 +32,7 @@ export class ProjectFormComponent implements OnInit {
       description: ['', Validators.required],
       demoLink: [''],
       imageCover: [null],
-      imagesTour: [null]
+      images: [null]
     });
   }
 
@@ -60,17 +60,6 @@ export class ProjectFormComponent implements OnInit {
     if (file) this.imageCoverFile = file;
   }
 
-  onImagesTourChange(event: any) {
-    if (event.target.files && event.target.files.length > 0) {
-      this.images = Array.from(event.target.files);
-    }
-  }
-
-  get fileNames(): string {
-    return this.images.length > 0 
-      ? this.images.map(file => file.name).join(', ') 
-      : 'No files selected';
-  }
 
   submit() {
     if (this.form.invalid) return;
@@ -86,10 +75,6 @@ export class ProjectFormComponent implements OnInit {
   
       if (this.imageCoverFile) {
         formData.append('NewImageCover', this.imageCoverFile); // match DTO
-      }
-  
-      for (let i = 0; i < this.images.length; i++) {
-        formData.append('NewImages', this.images[i]); // match DTO
       }
   
       this.projectService.updateProject(this.projectId, formData).subscribe({

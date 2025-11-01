@@ -24,13 +24,6 @@
         <span class="file-names">{{ imageCoverFile?.name }}</span>
     </div>
     
-    <div class="file-input-container">
-        <label>Images Tour:</label>
-        <input type="file" id="imagesTour" multiple (change)="onImagesTourChange($event)" />
-        <label for="imagesTour" class="custom-file-btn">Choose Files</label>
-        <span class="file-names">{{ fileNames }}</span>
-    </div>
-
 
     <button mat-raised-button color="primary" type="submit">
       {{ projectId ? 'Update' : 'Create' }}
