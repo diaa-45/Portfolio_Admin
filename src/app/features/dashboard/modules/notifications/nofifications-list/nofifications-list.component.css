@@ -1,0 +1,24 @@
+.notifications-container {
+    max-width: 600px;
+    margin: auto;
+    padding: 1rem;
+  }
+  li {
+    background: #f9f9f9;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  }
+  li.read {
+    opacity: 0.6;
+  }
+  button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  

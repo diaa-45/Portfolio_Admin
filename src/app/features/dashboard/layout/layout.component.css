@@ -96,5 +96,7 @@ app-header {
 
   footer {
     left: 70px;
+    border-radius: 10px;
+    margin-right: 10px;
   }
 }

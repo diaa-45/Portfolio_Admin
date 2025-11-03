@@ -25,7 +25,8 @@ export const DASHBOARD_ROUTES: Routes = [
       {path: 'links', loadComponent: () => import('./modules/links/links.component').then(m => m.LinksComponent) },
       // about
       {path: 'about', loadComponent: () => import('./modules/about/about-list/about.component').then(m => m.AboutComponent) },
-      {path: '', redirectTo: 'projects', pathMatch: 'full' }
+      {path: '', redirectTo: 'projects', pathMatch: 'full' },
+      {path: 'notification', loadComponent: () => import('./modules/notifications/nofifications-list/nofifications-list.component').then(m => m.NotificationsListComponent)}
     ]
   }
 ];

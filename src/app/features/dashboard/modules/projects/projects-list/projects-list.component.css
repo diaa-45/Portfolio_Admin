@@ -54,3 +54,21 @@
   align-items: center;
   column-gap: 50px;
 }
+
+/* min width*/
+
+/* ---------- RESPONSIVE STYLES ---------- */
+/* @media (max-width: 992px) {
+  
+}
+
+@media (max-width: 768px) {
+  .ImageCover{
+    display: none;
+  }
+
+}
+
+@media (max-width: 480px) {
+  
+} */

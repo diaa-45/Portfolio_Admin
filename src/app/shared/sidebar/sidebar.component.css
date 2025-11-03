@@ -1,96 +1,162 @@
-/* Sidebar Container */
+/* ---------- SIDEBAR BASE ---------- */
 .sidebar {
   width: 240px;
-  min-height: 100vh;
-  background: #1e293b; /* dark slate */
-  color: #f1f5f9;      /* light text */
-  display: flex;
-  flex-direction: column;
+  height: 100vh;
+  background: #1e1e2f;
+  color: #fff;
   position: fixed;
   top: 0;
   left: 0;
-  box-shadow: 2px 0 10px rgba(0,0,0,0.2);
-  transition: all 0.3s ease;
-  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, width 0.3s ease;
+  z-index: 200;
 }
 
-/* Header */
 .sidebar-header {
-  padding: 20px;
-  font-size: 1.3rem;
-  font-weight: 600;
-  text-align: center;
-  background: #0f172a;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Menu */
+.sidebar-header .logo {
+  height: 40px;
+  width: 40px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.sidebar-header h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 0 0.5rem;
+  flex: 1;
+  white-space: nowrap;
+}
+
+.close-btn {
+  display: none;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
 .sidebar-menu {
   list-style: none;
-  padding: 0;
+  padding: 1rem 0;
   margin: 0;
   flex: 1;
 }
 
 .sidebar-menu li {
-  border-bottom: 1px solid rgba(255,255,255,0.05);
+  margin: 0.25rem 0;
 }
 
-.sidebar-menu li a {
+.sidebar-menu a {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 14px 20px;
+  gap: 0.75rem;
+  padding: 0.75rem 1.25rem;
+  color: #d1d1e0;
   text-decoration: none;
-  color: #cbd5e1;
-  font-size: 0.95rem;
   font-weight: 500;
-  transition: all 0.25s ease;
+  transition: background 0.3s, color 0.3s;
 }
 
-.sidebar-menu li a:hover {
-  background: #334155;
-  color: #ffffff;
-  padding-left: 28px;
-}
-
-/* Active Link */
-.sidebar-menu li a.active {
-  background: #0ea5e9; /* sky blue */
+.sidebar-menu a:hover,
+.sidebar-menu a.active {
+  background: #007bff;
   color: #fff;
-  font-weight: 600;
-  border-left: 4px solid #38bdf8;
 }
 
-/* Responsive - Collapse on small screens */
-@media (max-width: 768px) {
+.sidebar-menu i {
+  font-size: 1rem;
+}
+
+/* ---------- TOGGLE BUTTON ---------- */
+.sidebar-toggle {
+  display: none;
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  background: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 0.7rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  z-index: 300;
+  transition: background 0.3s ease;
+}
+
+.sidebar-toggle:hover {
+  background: #0056b3;
+}
+
+/* ---------- RESPONSIVE BEHAVIOR ---------- */
+@media (max-width: 992px) {
   .sidebar {
-    width: 70px;
+    transform: translateX(-100%);
+    margin-top: 12.5%;
+    width: 200px;
+    border-radius: 5px;
   }
 
-  .sidebar-header h2 {
-    font-size: 1rem;
+  .sidebar.active {
+    transform: translateX(0);
   }
 
-  .sidebar-menu li a {
-    justify-content: center;
-    padding: 14px;
+  .sidebar-toggle {
+    display: block;
   }
 
-  .sidebar-menu li a span,
-  .sidebar-header h2 {
+  .close-btn {
+    display: block;
+  }
+  .sidebar-header{
     display: none;
   }
 }
-/* Logo + Title */
-.logo-container {
-  display: flex;
-  align-items: center;
+
+@media (max-width: 600px) {
+  .sidebar {
+    width: 200px;
+  }
+
+  .sidebar-menu a {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .sidebar-header{
+    display: none;
+  }
+}
+/* ---------- LOGOUT BUTTON ---------- */
+.logout-btn {
+  background: #007bff;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  margin-top: 50px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
-.logo {
-  width: 70px;
-  height: 70px;
-  border-radius: 15px;
-  object-fit: contain;
+.logout-btn:hover {
+  background: #0056b3;
+  transform: translateY(-1px);
+}
+
+.logout-text {
+  display: inline;
 }

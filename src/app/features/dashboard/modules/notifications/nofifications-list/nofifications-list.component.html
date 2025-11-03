@@ -1,0 +1,17 @@
+<div class="notifications-container">
+    <h2>New Contact Messages</h2>
+  
+    <ul *ngIf="notifications.length; else noMessages">
+      <li *ngFor="let n of notifications" [class.read]="n.isRead">
+        <strong>{{ n.name }}</strong> ({{ n.email }})<br />
+        <p>{{ n.message }}</p>
+        <small>{{ n.createdAt | date:'short' }}</small><br />
+        <button *ngIf="!n.isRead" (click)="markAsRead(n.id)">Mark as read</button>
+      </li>
+    </ul>
+  
+    <ng-template #noMessages>
+      <p>No contact messages yet.</p>
+    </ng-template>
+  </div>
+  
