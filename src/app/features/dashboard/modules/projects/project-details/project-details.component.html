@@ -6,15 +6,15 @@
     <h4>Cover Image</h4>
     <img [src]="project.imageCover ? 'https://localhost:44383'+ project.imageCover : 'default.png'" alt="{{ project.title }}" />
   </div>
-
+  <input type="file" #fileInput accept="image/*" (change)="onFileSelected($event)" style="display: none;" />
+  <button mat-raised-button color="primary"style="background-color: #1976d2;" (click)="fileInput.click()">
+    <mat-icon>cloud_upload</mat-icon>
+    Upload Image
+  </button>
   <div class="tour-images" *ngIf="project.images?.length">
     <div class="upload-section">
       <h4>Tour Images</h4>
-      <input type="file" #fileInput accept="image/*" (change)="onFileSelected($event)" style="display: none;" />
-      <button mat-raised-button color="primary"style="background-color: #1976d2;" (click)="fileInput.click()">
-        <mat-icon>cloud_upload</mat-icon>
-        Upload Image
-      </button>
+      
     </div>
     <div class="images-grid">
       <div class="image-wrapper" *ngFor="let img of project.images; let i = index">
