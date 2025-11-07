@@ -5,7 +5,7 @@ import { Article, ArticlePaginationResult } from './article.model';
 
 @Injectable({ providedIn: 'root' })
 export class ArticleService {
-  private apiUrl = 'http://myportfolio-api.runasp.net/api/Articles'; 
+  private apiUrl = 'https://myportfolio-api.runasp.net/api/Articles'; 
 
   constructor(private http: HttpClient) {}
 

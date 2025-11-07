@@ -12,7 +12,7 @@ export class NotificationService {
   private hubConnection!: signalR.HubConnection;
   private notificationsSubject = new BehaviorSubject<any[]>([]);
   notifications$ = this.notificationsSubject.asObservable();
-  private apiUrl = 'http://myportfolio-api.runasp.net/api/ContactForm';
+  private apiUrl = 'https://myportfolio-api.runasp.net/api/ContactForm';
 
   constructor(private http: HttpClient, private snackBar: MatSnackBar) {
     // ✅ Initialize connection and load data when service is created
@@ -35,7 +35,7 @@ export class NotificationService {
   // Start SignalR connection for real-time updates
   startConnection() {
     this.hubConnection = new signalR.HubConnectionBuilder()
-      .withUrl('http://myportfolio-api.runasp.net/notification', {
+      .withUrl('https://myportfolio-api.runasp.net/notification', {
         withCredentials: true
       })
       .withAutomaticReconnect()

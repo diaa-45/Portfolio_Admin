@@ -4,7 +4,7 @@
 
   <div class="cover-image">
     <h4>Cover Image</h4>
-    <img [src]="project.imageCover ? 'http://myportfolio-api.runasp.net'+ project.imageCover : 'default.png'" alt="{{ project.title }}" />
+    <img [src]="project.imageCover ? 'https://myportfolio-api.runasp.net'+ project.imageCover : 'default.png'" alt="{{ project.title }}" />
   </div>
   <input type="file" #fileInput accept="image/*" (change)="onFileSelected($event)" style="display: none;" />
   <button mat-raised-button color="primary"style="background-color: #1976d2;" (click)="fileInput.click()">
@@ -21,7 +21,7 @@
         <button mat-icon-button class="delete-btn" (click)="deleteImage(img)" aria-label="Delete image">
           X
         </button>
-        <img [src]="'http://myportfolio-api.runasp.net' + img.imageUrl" alt="{{ project.title }}" />
+        <img [src]="'https://myportfolio-api.runasp.net' + img.imageUrl" alt="{{ project.title }}" />
       </div>
     </div>
   </div>

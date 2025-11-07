@@ -1,6 +1,6 @@
 <div class="details-container" *ngIf="!isLoading && article">
     <div class="image-section">
-        <img [src]="article.mainImage? 'http://myportfolio-api.runasp.net'+ article.mainImage : '/defualt-article.png'" alt="Article Cover" />
+        <img [src]="article.mainImage? 'https://myportfolio-api.runasp.net'+ article.mainImage : '/defualt-article.png'" alt="Article Cover" />
     </div>
 
   
@@ -11,7 +11,7 @@
         <p class="date text-center mb-2 text-lg"><strong>Date:</strong> {{ article.date | date }}</p>
     </div>
     <div class="thumb-image-section">
-         <img [src]="article.thumbImage ? 'http://myportfolio-api.runasp.net'+ article.thumbImage : '/defualt-article.png'" alt="Article Thumb" />
+         <img [src]="article.thumbImage ? 'https://myportfolio-api.runasp.net'+ article.thumbImage : '/defualt-article.png'" alt="Article Thumb" />
         </div>
     <div class="content-section">
       <p>{{ article.content }}</p>

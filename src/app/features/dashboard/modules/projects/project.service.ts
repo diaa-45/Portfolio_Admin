@@ -7,7 +7,7 @@ import { Project, ProjectImage, ProjectPaginationResult } from './project.model'
   providedIn: 'root'
 })
 export class ProjectService {
-  private apiUrl = 'http://myportfolio-api.runasp.net/api/Projects';
+  private apiUrl = 'https://myportfolio-api.runasp.net/api/Projects';
 
   constructor(private http: HttpClient) {}
 
