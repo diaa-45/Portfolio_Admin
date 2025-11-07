@@ -12,7 +12,7 @@
           <strong>Contact:</strong> 
           <!--apper contact number as whatsapp link-->
         <ng-container *ngIf="course.contactLink">
-            <a [href]="'https://wa.me/' + course.ContactLink" target="_blank">
+            <a [href]="'https://wa.me/' + course.contactLink" target="_blank">
                 {{ course.contactLink }}
                 <mat-icon inline style="font-size: 18px; vertical-align: middle;">whatsapp</mat-icon>
             </a>

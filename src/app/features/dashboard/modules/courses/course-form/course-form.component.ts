@@ -46,7 +46,7 @@ export class CourseFormComponent implements OnInit {
       title: ['', Validators.required],
       instructorName: ['', Validators.required],
       description: ['', Validators.required],
-      ContactLink: ['', Validators.required],
+      contactLink: ['', Validators.required],
       imageCover: [null],
     });
 
@@ -75,7 +75,7 @@ export class CourseFormComponent implements OnInit {
     formData.append('title', this.form.value.title);
     formData.append('instructorName', this.form.value.instructorName);
     formData.append('description', this.form.value.description);
-    formData.append('ContactLink', this.form.value.contactLink);
+    formData.append('contactLink', this.form.value.contactLink);
   
     if (this.courseId) {
       formData.append('id', this.courseId.toString());
@@ -99,8 +99,10 @@ export class CourseFormComponent implements OnInit {
         formData.append('imageCover', this.ImageCoverFile);
       }
       this.courseService.create(formData).subscribe({
-        next: () => {
+        next: (res) => {
           alert('✅ Course created successfully!');
+          console.log(res);
+          
           this.router.navigate(['/dashboard/courses']);
         },
         error: (err) => {
