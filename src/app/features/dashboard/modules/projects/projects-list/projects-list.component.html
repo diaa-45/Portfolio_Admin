@@ -23,7 +23,7 @@
     <ng-container matColumnDef="imageCover">
       <th mat-header-cell *matHeaderCellDef> Cover </th>
       <td mat-cell *matCellDef="let project">
-        <img [src]=" project.imageCover ? 'https://localhost:44383'+ project.imageCover : '/default.png'" alt="{{ project.title }}" width="80" />
+        <img [src]=" project.imageCover ? 'http://myportfolio-api.runasp.net'+ project.imageCover : '/default.png'" alt="{{ project.title }}" width="80" />
       </td>
     </ng-container>
 
