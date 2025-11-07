@@ -58,6 +58,8 @@ export class AboutComponent implements OnInit {
     formData.append('mission', this.about.mission ?? '');
     formData.append('vision', this.about.vision ?? '');
     formData.append('values', this.about.values ?? '');
+    formData.append('linkedIn', this.about.linkedIn ?? '');
+    formData.append('gitHub', this.about.gitHub ?? '');
 
     // Correctly upload the actual File, not the preview DataURL
     if (this.openingImageFile) {

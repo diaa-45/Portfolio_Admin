@@ -7,6 +7,8 @@ export interface AboutSettings {
   mission: string;
   vision: string;
   values: string;
+  linkedIn: string;
+  gitHub: string;
   createdAt: string;
   updatedAt: string;
 }

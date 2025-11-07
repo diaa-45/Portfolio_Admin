@@ -33,6 +33,14 @@
           <td><textarea rows="4" [(ngModel)]="about.values" name="values"></textarea></td>
         </tr>
         <tr>
+          <th>LinkedIn: </th>
+          <td><input type="text" [(ngModel)]="about.linkedIn" name="linkedIn"/></td>
+        </tr>
+        <tr>
+          <th>GitHub: </th>
+          <td><input type="text" [(ngModel)]="about.gitHub" name="gitHub"/></td>
+        </tr>
+        <tr>
           <th>Opening Image</th>
           <td style="display: flex; align-items: center; gap: 12px;">
             <label for="openingImage" class="custom-file-btn">
