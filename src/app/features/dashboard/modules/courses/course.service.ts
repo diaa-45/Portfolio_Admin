@@ -5,7 +5,8 @@ import { Course, CoursePaginationResult } from './course.model';
 
 @Injectable({ providedIn: 'root' })
 export class CourseService {
-  private apiUrl = 'https://myportfolio-api.runasp.net/api/Course'; 
+  //private apiUrl = 'https://myportfolio-api.runasp.net/api/Course'; 
+  private apiUrl = 'https://localhost:44383/api/Course';
 
   constructor(private http: HttpClient) {}
 

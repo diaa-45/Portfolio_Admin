@@ -5,7 +5,8 @@ import { AboutSettings } from './about.model';
 
 @Injectable({ providedIn: 'root' })
 export class AboutService {
-  private apiUrl = 'https://myportfolio-api.runasp.net/api/About';
+  //private apiUrl = 'https://myportfolio-api.runasp.net/api/About';
+  private apiUrl = 'https://localhost:44383/api/About';
 
   constructor(private http: HttpClient) {}
 

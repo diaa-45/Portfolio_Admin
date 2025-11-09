@@ -24,7 +24,10 @@ export const DASHBOARD_ROUTES: Routes = [
       // about
       {path: 'about', loadComponent: () => import('./modules/about/about-list/about.component').then(m => m.AboutComponent) },
       {path: '', redirectTo: 'projects', pathMatch: 'full' },
-      {path: 'notification', loadComponent: () => import('./modules/notifications/nofifications-list/nofifications-list.component').then(m => m.NotificationsListComponent)}
+      {path: 'notification', loadComponent: () => import('./modules/notifications/nofifications-list/nofifications-list.component').then(m => m.NotificationsListComponent)},
+      // settings
+      {path: 'change-password', loadComponent: () => import('./modules/settings/settings.component').then(m => m.SettingsComponent)}
+
     ]
   }
 ];
