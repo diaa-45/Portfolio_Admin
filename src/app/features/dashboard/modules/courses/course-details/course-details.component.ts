@@ -6,6 +6,9 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatIcon } from "@angular/material/icon";
 import { MatButtonModule } from '@angular/material/button';
 
+import { environment } from '../../../../../../environments/environment.prod';
+import { environmentDev } from '../../../../../../environments/environment.dev';
+
 @Component({
   selector: 'app-course-details',
   standalone: true,
@@ -18,6 +21,8 @@ export class CourseDetailsComponent implements OnInit {
   course: any;
   isLoading = true;
 
+  //iamgesDev : string = environmentDev.imagesUrl;
+  iamgesProd : string = environment.imagesUrl;
   constructor(private route: ActivatedRoute, private courseService: CourseService, private router: Router) {}
 
   ngOnInit(): void {

@@ -5,6 +5,9 @@ import { CommonModule } from '@angular/common';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatIcon } from "@angular/material/icon";
 
+import { environment } from '../../../../../../environments/environment.prod';
+import { environmentDev } from '../../../../../../environments/environment.dev';
+
 @Component({
   selector: 'app-article-details',
   standalone: true,
@@ -17,6 +20,8 @@ export class ArticleDetailsComponent implements OnInit {
   article: any;
   isLoading = true;
 
+  //iamgesDev : string = environmentDev.imagesUrl;
+  iamgesProd : string = environment.imagesUrl;
   constructor(private route: ActivatedRoute, private articleService: ArticleService, private router: Router) {}
 
   ngOnInit(): void {

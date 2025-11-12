@@ -9,6 +9,9 @@ import { Article } from '../article.model';
 import { ArticleService } from '../article.service';
 import { NotificationService } from '../../../../../core/services/notification.service';
 
+import { environment } from '../../../../../../environments/environment.prod';
+import { environmentDev } from '../../../../../../environments/environment.dev';
+
 @Component({
   selector: 'app-article-list',
   standalone: true,
@@ -24,6 +27,8 @@ export class ArticleListComponent implements OnInit {
   pageSize: number = 6;
   totalPages: number = 0;
 
+  //iamgesDev : string = environmentDev.imagesUrl;
+  iamgesProd : string = environment.imagesUrl;
 
   constructor(
     private articleService: ArticleService,

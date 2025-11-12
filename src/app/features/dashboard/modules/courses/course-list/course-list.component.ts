@@ -8,6 +8,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { Course } from '../course.model';
 import { CourseService } from '../course.service';
 import { NotificationService } from '../../../../../core/services/notification.service';
+import { environment } from '../../../../../../environments/environment.prod';
+import { environmentDev } from '../../../../../../environments/environment.dev';
 
 @Component({
   selector: 'app-course-list',
@@ -23,6 +25,8 @@ export class CourseListComponent implements OnInit {
   currentPage: number = 1;
   pageSize: number = 6;
   totalPages: number = 0;
+  //iamgesDev : string = environmentDev.imagesUrl;
+  iamgesProd : string = environment.imagesUrl;
 
   constructor(
     private courseService: CourseService,

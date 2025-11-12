@@ -1,7 +1,8 @@
 <div class="details-container" *ngIf="!isLoading && article">
     <div class="image-section">
-        <img [src]="article.mainImage? 'https://myportfolio-api.runasp.net'+ article.mainImage : '/defualt-article.png'" alt="Article Cover" />
-    </div>
+        <img [src]="article.mainImage? iamgesProd+ article.mainImage : '/defualt-article.png'" alt="Article Cover" />
+<!--     <img [src]="article.mainImage? iamgesDev+ article.mainImage : '/defualt-article.png'" alt="Article Cover" />
+ -->    </div>
 
   
     <!-- title and author and date Section -->
@@ -11,8 +12,9 @@
         <p class="date text-center mb-2 text-lg"><strong>Date:</strong> {{ article.date | date }}</p>
     </div>
     <div class="thumb-image-section">
-         <img [src]="article.thumbImage ? 'https://myportfolio-api.runasp.net'+ article.thumbImage : '/defualt-article.png'" alt="Article Thumb" />
-        </div>
+         <img [src]="article.thumbImage ? iamgesProd+ article.thumbImage : '/defualt-article.png'" alt="Article Thumb" />
+<!--      <img [src]="article.thumbImage ? iamgesDev+ article.thumbImage : '/defualt-article.png'" alt="Article Thumb" />
+ -->        </div>
     <div class="content-section">
       <p>{{ article.content }}</p>
     </div>

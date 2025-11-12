@@ -8,6 +8,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { NotificationService } from '../../../../../core/services/notification.service';
 import { ImagePreviewDialogComponent } from './image-preview-dialog.component';
+import { environment } from '../../../../../../environments/environment.prod';
+import { environmentDev } from '../../../../../../environments/environment.dev';
 
 @Component({
   selector: 'app-project-details',
@@ -21,6 +23,8 @@ export class ProjectDetailsComponent implements OnInit {
   loading = false;
   selectedFile: File | null = null;
   selectedImagePreview: string | null = null;
+  //iamgesDev : string = environmentDev.imagesUrl;
+  iamgesProd : string = environment.imagesUrl;
 
   constructor(
     private route: ActivatedRoute,

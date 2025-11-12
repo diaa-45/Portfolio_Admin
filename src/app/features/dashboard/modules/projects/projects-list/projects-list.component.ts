@@ -7,6 +7,8 @@ import { Router } from '@angular/router';
 import { ProjectService } from '../project.service';
 import { Project } from '../project.model';
 import { NotificationService } from '../../../../../core/services/notification.service';
+import { environment } from '../../../../../../environments/environment.prod';
+import { environmentDev } from '../../../../../../environments/environment.dev';
 
 @Component({
   selector: 'app-projects-list',
@@ -22,6 +24,8 @@ export class ProjectsListComponent implements OnInit {
   currentPage: number = 1;
   pageSize: number = 6;
   totalPages: number = 0;
+  //iamgesDev : string = environmentDev.imagesUrl;
+  iamgesProd : string = environment.imagesUrl;
 
   constructor(private projectService: ProjectService,private notify: NotificationService, private router: Router) {}
 

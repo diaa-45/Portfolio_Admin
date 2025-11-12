@@ -52,8 +52,9 @@
               <img [src]="openingImage" alt="Preview" />
             </div>
             <div class="preview" *ngIf="!openingImage && about.openingImage">
-              <img [src]="'https://myportfolio-api.runasp.net' + about.openingImage" alt="Current Image" />
-            </div>
+              <img [src]="this.iamgesProd + about.openingImage" alt="Current Image" />
+<!--           <img [src]="this.iamgesDev + about.openingImage" alt="Current Image" />
+ -->            </div>
           </td>
         </tr>
       </tbody>

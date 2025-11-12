@@ -4,6 +4,8 @@ import { AboutSettings } from '../about.model';
 import { AboutService } from '../about.service';
 import { FormsModule } from '@angular/forms';
 import { MatIcon } from "@angular/material/icon";
+import { environment } from '../../../../../../environments/environment.prod';
+import { environmentDev } from '../../../../../../environments/environment.dev';
 
 @Component({
   selector: 'app-about',
@@ -20,6 +22,8 @@ export class AboutComponent implements OnInit {
   saveMessage: string | null = null;
   openingImage: any;
   openingImageFile: File | null = null;
+  //iamgesDev : string = environmentDev.imagesUrl;
+  iamgesProd : string = environment.imagesUrl;
 
   constructor(private aboutService: AboutService) {}
 

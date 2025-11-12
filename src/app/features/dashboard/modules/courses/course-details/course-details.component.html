@@ -1,7 +1,8 @@
 <div class="details-container" *ngIf="!isLoading && course">
     <div class="image-section">
-        <img [src]="course.imageCover? 'https://myportfolio-api.runasp.net'+ course.imageCover : '/defualt-article.png'" alt="Course Cover" />
-    </div>
+        <img [src]="course.imageCover? iamgesProd+ course.imageCover : '/defualt-article.png'" alt="Course Cover" />
+<!--    <img [src]="course.imageCover? iamgesDev+ course.imageCover : '/defualt-article.png'" alt="Course Cover" />
+ -->    </div>
 
   
     <!-- title and instructor and ContactLink Section -->

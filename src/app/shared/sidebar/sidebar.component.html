@@ -1,26 +1,23 @@
+<!-- Toggle Button for Mobile -->
+<button class="sidebar-toggle" (click)="toggleSidebar()" [attr.aria-label]="sidebarOpen ? 'Close sidebar' : 'Open sidebar'">
+  <i class="fas fa-bars"></i>
+</button>
+
 <nav class="sidebar" [class.active]="sidebarOpen">
   <div class="sidebar-header">
     <img src="/logo.jpg" alt="Logo" class="logo" />
     <h4>Eng Diaa Dashboard</h4>
-    <button class="close-btn" (click)="toggleSidebar()">
-      <i class="fas fa-times"></i>
-    </button>
+    
   </div>
-
   <ul class="sidebar-menu">
-    <li><a routerLink="/dashboard/projects"><i class="fas fa-folder"></i> Projects</a></li>
-    <li><a routerLink="/dashboard/articles"><i class="fas fa-file-alt"></i> Articles</a></li>
-    <li><a routerLink="/dashboard/courses"><i class="fas fa-graduation-cap"></i> Courses</a></li>
-    <li><a routerLink="/dashboard/about"><i class="fas fa-info-circle"></i> About</a></li>
-    <li><a routerLink="/dashboard/change-password"><i class="fas fa-cog"></i> Settings</a></li>
+    <li><a routerLink="/dashboard/projects" (click)="closeSidebarOnMobile()"><i class="fas fa-folder"></i> Projects</a></li>
+    <li><a routerLink="/dashboard/articles" (click)="closeSidebarOnMobile()"><i class="fas fa-file-alt"></i> Articles</a></li>
+    <li><a routerLink="/dashboard/courses" (click)="closeSidebarOnMobile()"><i class="fas fa-graduation-cap"></i> Courses</a></li>
+    <li><a routerLink="/dashboard/about" (click)="closeSidebarOnMobile()"><i class="fas fa-info-circle"></i> About</a></li>
+    <li><a routerLink="/dashboard/change-password" (click)="closeSidebarOnMobile()"><i class="fas fa-cog"></i> Settings</a></li>
     <button class="logout-btn" (click)="logout()">
       <i class="fas fa-sign-out-alt"></i>
       <span class="logout-text">Logout</span>
     </button>
   </ul>
 </nav>
-
-<!-- Toggle button (visible only on mobile) -->
-<button class="sidebar-toggle" (click)="toggleSidebar()">
-  <i class="fas fa-bars"></i>
-</button>
