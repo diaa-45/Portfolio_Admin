@@ -3,11 +3,13 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable, tap } from 'rxjs';
 import { TokenService } from './token.service';
+import { environment } from '../../../environments/environment.prod';
+import { environmentDev } from '../../../environments/environment.dev';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-//private apiUrl = 'https://myportfolio-api.runasp.net/api/auth'; // backend URL
-private apiUrl = 'https://localhost:44383/api/Auth'; // backend URL
+private apiUrl = `${environment.apiUrl}/Auth` // backend URL
+//private apiUrl = `${environmentDev.apiUrl}/Auth`; // backend URL
   constructor(
     private http: HttpClient,
     private router: Router,

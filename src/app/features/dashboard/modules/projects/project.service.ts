@@ -2,13 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Project, ProjectImage, ProjectPaginationResult } from './project.model';
+import { environment } from '../../../../../environments/environment.prod';
+import { environmentDev } from '../../../../../environments/environment.dev';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProjectService {
-  //private apiUrl = 'https://myportfolio-api.runasp.net/api/Projects';
-  private apiUrl = 'https://localhost:44383/api/Projects';
+  private apiUrl = `${environment.apiUrl}/Projects` // backend URL
+//private apiUrl = `${environmentDev.apiUrl}/Projects`; // backend URL
 
   constructor(private http: HttpClient) {}
 

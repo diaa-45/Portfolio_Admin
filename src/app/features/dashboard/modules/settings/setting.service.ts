@@ -3,13 +3,15 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ChangePassword } from './change-password.model';
 import { TokenService } from '../../../../core/services/token.service';
+import { environment } from '../../../../../environments/environment.prod';
+import { environmentDev } from '../../../../../environments/environment.dev';
 
 @Injectable({
     providedIn: 'root'
   })
   export class ChangePasswordService { 
-    //private apiUrl = 'https://myportfolio-api.runasp.net/api/Auth';
-    private apiUrl = 'https://localhost:44383/api/Auth';
+    private apiUrl = `${environment.apiUrl}/Auth` // backend URL
+//private apiUrl = `${environmentDev.apiUrl}/Auth`; // backend URL
   
     constructor(private http: HttpClient,private tokenService: TokenService) {}
   

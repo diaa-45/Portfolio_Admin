@@ -4,6 +4,8 @@ import * as signalR from '@microsoft/signalr';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { environment } from '../../../../../environments/environment.prod';
+import { environmentDev } from '../../../../../environments/environment.dev';
 
 @Injectable({
   providedIn: 'root'
@@ -12,9 +14,9 @@ export class NotificationService {
   private hubConnection!: signalR.HubConnection;
   private notificationsSubject = new BehaviorSubject<any[]>([]);
   notifications$ = this.notificationsSubject.asObservable();
-  //private apiUrl = 'https://myportfolio-api.runasp.net/api/ContactForm';
-  private apiUrl = 'https://localhost:44383/api/ContactForm';
 
+  private apiUrl = `${environment.apiUrl}/ContactForm` // backend URL
+//private apiUrl = `${environmentDev.apiUrl}/ContactForm`; // backend URL
   constructor(private http: HttpClient, private snackBar: MatSnackBar) {
     // ✅ Initialize connection and load data when service is created
     this.loadNotifications();
@@ -36,8 +38,8 @@ export class NotificationService {
   // Start SignalR connection for real-time updates
   startConnection() {
     this.hubConnection = new signalR.HubConnectionBuilder()
-      //.withUrl('https://myportfolio-api.runasp.net/notification'
-        .withUrl('https://localhost:44383/notification'
+      .withUrl(`${environment.notificationUrl}/notification`
+        //.withUrl(`${environmentDev.notificationUrl}/notification`
         , {
         withCredentials: true
       })

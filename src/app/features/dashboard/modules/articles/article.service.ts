@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Article, ArticlePaginationResult } from './article.model';
+import { environment } from '../../../../../environments/environment.prod';
+import { environmentDev } from '../../../../../environments/environment.dev';
 
 @Injectable({ providedIn: 'root' })
 export class ArticleService {
-  //private apiUrl = 'https://myportfolio-api.runasp.net/api/Articles'; 
-  private apiUrl = 'https://localhost:44383/api/Articles';
-
+  private apiUrl = `${environment.apiUrl}/Articles` // backend URL
+//private apiUrl = `${environmentDev.apiUrl}/Articles`; // backend URL
   constructor(private http: HttpClient) {}
 
   getAll(page: number = 1, pageSize: number = 10): Observable<ArticlePaginationResult> {

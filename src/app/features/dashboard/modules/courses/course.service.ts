@@ -2,11 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Course, CoursePaginationResult } from './course.model';
+import { environment } from '../../../../../environments/environment.prod';
+import { environmentDev } from '../../../../../environments/environment.dev';
 
 @Injectable({ providedIn: 'root' })
 export class CourseService {
-  //private apiUrl = 'https://myportfolio-api.runasp.net/api/Course'; 
-  private apiUrl = 'https://localhost:44383/api/Course';
+  private apiUrl = `${environment.apiUrl}/Course` // backend URL
+//private apiUrl = `${environmentDev.apiUrl}/Course`; // backend URL
 
   constructor(private http: HttpClient) {}
 
