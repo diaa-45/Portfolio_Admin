@@ -9,6 +9,8 @@ export interface AboutSettings {
   values: string;
   linkedIn: string;
   gitHub: string;
+  email: string;
+  phoneNumber: string;
   createdAt: string;
   updatedAt: string;
 }

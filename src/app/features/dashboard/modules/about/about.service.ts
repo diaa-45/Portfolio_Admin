@@ -8,7 +8,7 @@ import { environmentDev } from '../../../../../environments/environment.dev';
 @Injectable({ providedIn: 'root' })
 export class AboutService {
   private apiUrl = `${environment.apiUrl}/About` // backend URL
-//private apiUrl = `${environmentDev.apiUrl}/About`; // backend URL
+  //private apiUrl = `${environmentDev.apiUrl}/About`; // backend URL
 
   constructor(private http: HttpClient) {}
 

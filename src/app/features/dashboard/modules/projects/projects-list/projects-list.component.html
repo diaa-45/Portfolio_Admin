@@ -15,14 +15,14 @@
 
     <!-- Description Column -->
     <ng-container matColumnDef="description">
-      <th mat-header-cell *matHeaderCellDef> Description </th>
-      <td mat-cell *matCellDef="let project"> {{ project.description }} </td>
+      <th mat-header-cell *matHeaderCellDef class="desc"> Description </th>
+      <td mat-cell *matCellDef="let project" class="desc"> {{ project.description }} </td>
     </ng-container>
 
     <!-- Cover Column -->
     <ng-container matColumnDef="imageCover">
-      <th mat-header-cell *matHeaderCellDef> Cover </th>
-      <td mat-cell *matCellDef="let project">
+      <th mat-header-cell *matHeaderCellDef class="cover"> Cover </th>
+      <td mat-cell *matCellDef="let project" class="cover">
         <img [src]=" project.imageCover ? iamgesProd+ project.imageCover : '/default.png'" alt="{{ project.title }}" width="80" />
 <!--    <img [src]=" project.imageCover ? iamgesDev+ project.imageCover : '/default.png'" alt="{{ project.title }}" width="80" />
  -->      </td>
@@ -30,8 +30,8 @@
 
     <!-- Demo Link Column -->
     <ng-container matColumnDef="demoLink" >
-      <th mat-header-cell *matHeaderCellDef> Demo </th>
-      <td mat-cell *matCellDef="let project">
+      <th mat-header-cell *matHeaderCellDef class="demo"> Demo </th>
+      <td mat-cell *matCellDef="let project" class="demo">
         <a [href]="project.demoLink" target="_blank" class="demo-link"> View Demo </a>
       </td>
     </ng-container>

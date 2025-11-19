@@ -30,3 +30,11 @@
     align-items: center;
     column-gap: 50px;
   }
+
+  
+@media (max-width: 768px) {
+  .date{
+    display: none;
+  }
+
+}

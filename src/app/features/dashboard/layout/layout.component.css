@@ -1,102 +1,81 @@
-/* Layout Container */
+/* Base layout */
 .layout-container {
   display: flex;
   min-height: 100vh;
-  background: #f8fafc;
 }
 
 /* Sidebar */
 app-sidebar {
-  width: 240px;
+  width: 260px;
   flex-shrink: 0;
-  position: fixed;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  z-index: 1000;
 }
 
-/* Main Area (Header + Content + Footer) */
+/* Main area */
 .main-area {
-  margin-left: 240px; /* align with sidebar */
-  flex: 1;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  flex-grow: 1;
 }
 
-/* Header */
-app-header {
-  height: 60px;
-  flex-shrink: 0;
-  position: fixed;
-  left: 240px;
-  right: 0;
-  top: 0;
-  z-index: 1000;
-}
-
-/* Main Content */
 .main-content {
-  flex: 1;
-  display: flex;
-  justify-content: center;  
-  align-items: center;      
+  flex-grow: 1;
   padding: 20px;
-  margin-top: 60px; /* leave space for header */
-  margin-bottom: 20px; /* leave space for footer */
-}
-
-/* Inner Content */
-.content {
-  width: 100%;
-  max-width: 1000px;
-  background: #ffffff;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  min-height: 70vh;
 }
 
 /* Footer */
 .footer {
-  height: auto;
-  background: #0f172a;
-  color: #f1f5f9;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   text-align: center;
-  padding: 10px 15px;
-  border-top: 1px solid rgba(255,255,255,0.1);
-  font-size: 0.85rem;
-  font-weight: 500;
-  line-height: 1.5;
+  padding: 10px;
+  background: #f6f6f6;
 }
 
-.footer-line {
-  margin: 4px 0; /* spacing between lines */
-}
+/* =========================== */
+/*     MOBILE RESPONSIVENESS   */
+/* =========================== */
 
-
-/* Responsive Sidebar Collapse */
 @media (max-width: 768px) {
+
+  /* Stack layout vertically */
+  .layout-container {
+    flex-direction: column;
+  }
+
+  /* Sidebar collapses above content */
   app-sidebar {
-    width: 70px;
+    width: 100%;
+    order: 1;
   }
 
-  .main-area {
-    margin-left: 70px;
-  }
-
+  /* Header comes under sidebar */
   app-header {
-    left: 70px;
+    order: 2;
+    width: 100%;
   }
 
-  footer {
-    left: 70px;
-    border-radius: 10px;
-    margin-right: 10px;
+  /* Main content adjusts */
+  .main-content {
+    padding: 10px;
+    margin-top: 40px;
+  }
+
+  /* Footer becomes mobile-friendly */
+  .footer {
+    font-size: 14px;
+    padding: 15px 5px;
+  }
+
+  .footer-line {
+    margin: 4px 0;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+  .main-content {
+    padding: 5px;
+  }
+
+  .footer {
+    font-size: 12px;
   }
 }
