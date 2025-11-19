@@ -15,9 +15,21 @@
     <li><a routerLink="/dashboard/courses" (click)="closeSidebarOnMobile()"><i class="fas fa-graduation-cap"></i> Courses</a></li>
     <li><a routerLink="/dashboard/about" (click)="closeSidebarOnMobile()"><i class="fas fa-info-circle"></i> About</a></li>
     <li><a routerLink="/dashboard/change-password" (click)="closeSidebarOnMobile()"><i class="fas fa-cog"></i> Settings</a></li>
-    <button class="logout-btn" (click)="logout()">
-      <i class="fas fa-sign-out-alt"></i>
-      <span class="logout-text">Logout</span>
-    </button>
+    <div class="header-actions">
+      <button class="notification-btn" 
+              [routerLink]="['/dashboard/notification']" 
+              (click)="closeSidebarOnMobile()"
+              aria-label="Notifications">
+        <i class="fas fa-bell"></i>
+        <span *ngIf="unreadCount > 0" class="notification-count">
+          {{ unreadCount }}
+        </span>
+      </button>
+  
+      <button class="logout-btn" (click)="logout()">
+        <i class="fas fa-sign-out-alt"></i>
+        <span class="logout-text">Logout</span>
+      </button>
+    </div>
   </ul>
 </nav>

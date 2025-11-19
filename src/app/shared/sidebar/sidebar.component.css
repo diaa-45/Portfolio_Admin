@@ -259,6 +259,46 @@
   }
 }
 
+/* ---------- HEADER ACTIONS ---------- */
+.header-actions {
+  display: flex;
+  align-items: center;
+  margin: 20px 16px;
+  gap: 1rem;
+}
+
+/* ---------- NOTIFICATION BUTTON ---------- */
+.notification-btn {
+  position: relative;
+  background: transparent;
+  border: none;
+  width: 100px;
+  cursor: pointer;
+  color: #444;
+  font-size: 1.5rem;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.notification-btn:hover {
+  color: #007bff;
+  transform: scale(1.1);
+}
+
+.notification-count {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  background: #ff3b3b;
+  color: #fff;
+  border-radius: 50%;
+  font-size: 0.7rem;
+  font-weight: bold;
+  padding: 3px 6px;
+  min-width: 18px;
+  text-align: center;
+  animation: pulse 1.5s infinite;
+}
+
 @media (max-width: 600px) {
   .sidebar {
     width: 100%;

@@ -48,8 +48,7 @@ app-sidebar {
 
   /* Header comes under sidebar */
   app-header {
-    order: 2;
-    width: 100%;
+    display: none;
   }
 
   /* Main content adjusts */
